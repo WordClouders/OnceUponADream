@@ -1,24 +1,18 @@
-import Navibar from "./Features/Navibar";
-import "./App.css";
-import React, { useState } from "react";
-import { pairHashpack, contractSigningFunc } from "./hashconnect";
+import Navibar from './Features/Navibar';
+import Titles from './Features/Titles';
+import NewestStories from './Features/NewestStories';
+import Books from './Features/Books'
+import Write from './Features/Write';
+import './App.css';
 
 function App() {
-  const [pairingString, setPairingString] = useState("");
-  // <p>{pairingString}</p>
-
   return (
     <main>
       <Navibar></Navibar>
-      <button
-        onClick={async () => {
-          const saveData = await pairHashpack();
-          setPairingString(saveData.pairingString);
-        }}
-      >
-        Pair wallet
-      </button>
-      <button onClick={contractSigningFunc}>Pair wallet</button>
+      <Titles></Titles>
+      <NewestStories></NewestStories>
+      <Books></Books>
+      <Write></Write>
     </main>
   );
 }
