@@ -1,3 +1,30 @@
+.story-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: black;
+    color: white;
+    padding: 20px;
+    transition: transform 0.3s ease;
+    transform: translateY(-100%); /* Hide initially */
+    z-index: 10;
+    height: 17vh;
+  }
+  
+  .story-background p {
+    font-size: 16px; /* Adjust as needed */
+  }
+  
+  /* Show the story background when selectedStory is not null */
+  .buttons-container .story-background {
+    transform: translateY(0);
+  }
+  
+  /* Styles for the close button */
+  .story-background button {
+    margin-top: 20px;
+  }
 .image-button {
     background-image: url('Images/cloud.png');
     background-size: cover;
@@ -17,28 +44,6 @@
     padding-top: 5px;
 }
 
-.image-dropdown {
-    position: absolute;
-    top: 100%; /* Positioned right below the button */
-    left: 50%;
-    transform: translateX(-50%);
-  }
-  
-  .image-dropdown img {
-    width: 300px; /* Adjust as needed */
-    height: auto;
-    display: block;
-  }
-  
-  .overlay-text {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: white; /* Adjust text color as needed */
-    font-size: 20px; /* Adjust font size as needed */
-  }
-
 .image-button:hover {
   transform: scale(1.2);
 }
@@ -46,12 +51,8 @@
 .buttons-container {
     margin-top: 5vh;
     display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    height: 10vh;
-    flex-wrap: wrap;
+    justify-content: space-evenly; /* Evenly spaces the child elements */
+    align-items: center; /* Vertically center the buttons */
+    height: 10vh; /* Adjust as needed, vh units for full viewport height */
+    position: relative; 
   }
-
-  .story-item {
-  position: relative; /* Needed for absolute positioning of dropdown */
-}

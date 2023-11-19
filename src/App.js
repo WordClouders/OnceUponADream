@@ -21,7 +21,7 @@ function App() {
       >
         Pair wallet
       </button>
-      <button onClick={contractSigningFunc}>Pair wallet</button>
+      <button onClick={contractSigningFunc}>Sign contract</button>
     </main>
   );
 }

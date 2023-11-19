@@ -5,6 +5,25 @@
     width: 100%; /* Ensures the container spans the full width */
     display: flex;
     justify-content: start; /* Aligns children (button) to the left */
+    align-items: center;
+}
+.text-input {
+    margin-right: 10px; /* Space between input and button */
+    padding: 5px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 10em;
+    margin-left: -2em;
+  }
+  
+  .enter-button {
+    margin-left: -16em;
+    padding: 5px 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
   }
   
   .picture-button {
