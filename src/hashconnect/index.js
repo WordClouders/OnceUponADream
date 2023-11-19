@@ -2,7 +2,7 @@ import { HashConnect } from "hashconnect";
 import { ContractId, ContractExecuteTransaction } from "@hashgraph/sdk";
 
 let hashconnect = new HashConnect(true);
-const contractId = ContractId.fromString("0.0.5906887");
+const contractId = ContractId.fromString("0.0.5908244");
 
 let appMetadata = {
   name: "OnceUponADream",
@@ -33,11 +33,14 @@ export const contractSigningFunc = async () => {
     saveData.savedPairings[0].accountIds[0]
   );
   const signer = hashconnect.getSigner(provider);
-  const sendHbarTx = new ContractExecuteTransaction(contractId)
+  console.log(signer);
+  const sendHbarTx = await new ContractExecuteTransaction(contractId)
     .setGas(100000)
     .setFunction("getAllCompletedStories")
     .freezeWithSigner(signer);
-  const response = await (await sendHbarTx).executeWithSigner(signer);
+  console.log(sendHbarTx);
+
+  const response = await sendHbarTx.executeWithSigner(signer);
   console.log(response);
   return response.getString(0);
 };
