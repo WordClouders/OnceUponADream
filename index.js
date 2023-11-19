@@ -1,4 +1,18 @@
 console.clear();
+const readline = require("readline");
+function promptUser() {
+  return new Promise((resolve) => {
+    const rl = readline.createInterface({
+      input: process.stdin,
+      output: process.stdout,
+    });
+
+    rl.question("Enter a word (or 'n' to exit): ", (userInput) => {
+      rl.close();
+      resolve(userInput);
+    });
+  });
+}
 require("dotenv").config();
 const {
 	AccountId,
@@ -31,13 +45,10 @@ async function main() {
 
   //Sign the transaction with the client operator key and submit to a Hedera network
   const txResponse = contractCreate.execute(client);
-
   //Get the receipt of the transaction
   const receipt = (await txResponse).getReceipt(client);
-
   //Get the new contract ID
   const newContractId = (await receipt).contractId;
-      
   console.log("The new contract ID is " +newContractId);
 
   //Create story prompt
@@ -56,9 +67,9 @@ async function main() {
 
   //get num story prompts
   const transactionQ2 = new ContractCallQuery()
-  .setContractId(newContractId)
-  .setGas(100000)
-  .setFunction("getStoryPromptCount", new ContractFunctionParameters());
+    .setContractId(newContractId)
+    .setGas(100000)
+    .setFunction("getStoryPromptCount", new ContractFunctionParameters());
 
   //Sign with the client operator private key to pay for the transaction and submit the query to a Hedera network
   const ctxResponseQ2 = await transactionQ2.execute(client);
@@ -66,21 +77,30 @@ async function main() {
   const receiptTxQ2 = ctxResponseQ2.getUint256(0);
   console.log(`- Here's the story prompt number that you asked for: ${receiptTxQ2} \n`);
 
-  //Submit a word
-  const transaction3 = new ContractExecuteTransaction()
-  .setContractId(newContractId)
-  .setGas(10000000)
-  .setFunction("submitWord", new ContractFunctionParameters()
-        .addUint256(0)
-        .addString("Heelo!"))
+  let userInput = "";
 
-  //Sign with the client operator private key to pay for the transaction and submit the query to a Hedera network
-  const txResponse3 = await transaction3.execute(client);
-  //Request the receipt of the transaction
-  const receipt3 = await txResponse3.getReceipt(client);
-  //Get the transaction consensus status
-  const transactionStatus3 = receipt3.status;
-  console.log("The transaction consensus status is " +transactionStatus3);
+  while (userInput.toLowerCase() !== "n") {
+    // Prompt the user to enter a word or 'n' to exit
+    userInput = await promptUser();
+
+      if (userInput.toLowerCase() !== "n") {      //Submit a word
+      const transaction3 = new ContractExecuteTransaction()
+      .setContractId(newContractId)
+      .setGas(10000000)
+      .setFunction("submitWord", new ContractFunctionParameters()
+            .addUint256(0)
+            .addString(userInput));
+
+      //Sign with the client operator private key to pay for the transaction and submit the query to a Hedera network
+      const txResponse3 = await transaction3.execute(client);
+      //Request the receipt of the transaction
+      const receipt3 = await txResponse3.getReceipt(client);
+      //Get the transaction consensus status
+      const transactionStatus3 = receipt3.status;
+      console.log("The transaction consensus status is " +transactionStatus3);
+    })
+}
+  
   
   //get prompt by index
   const transactionQ4 = new ContractCallQuery()
@@ -110,6 +130,19 @@ async function main() {
   //Get the transaction consensus status
   const transactionStatus5 = receipt5.status;
   console.log("The transaction consensus status is " +transactionStatus5);
+
+  //get prompt by index
+  const transactionQ5 = new ContractCallQuery()
+  .setContractId(newContractId)
+  .setGas(100000)
+  .setFunction("getStoryPrompt", new ContractFunctionParameters()
+        .addUint256(0));
+
+  //Sign with the client operator private key to pay for the transaction and submit the query to a Hedera network
+  const ctxResponseQ5 = await transactionQ5.execute(client);
+  //Request the receipt of the transaction
+  const receiptTxQ5 = ctxResponseQ5.getString(0);
+  console.log(`- Here's the story prompt that you asked for: ${receiptTxQ5} \n`);
 
 	// Query the contract to check changes in state variable
 	/*const contractQueryTx = new ContractCallQuery()
