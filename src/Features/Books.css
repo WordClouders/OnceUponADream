@@ -1,0 +1,36 @@
+.books-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10vh;
+    gap: 20em;
+    margin-top: 13em;
+  }
+  
+  .book-button {
+    width: 16em;
+    height: 12em;
+    background-color: transparent;
+    border: none;
+    border-radius: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.3s ease;
+  }
+  .book-button:hover {
+    transform: scale(1.2);
+  }
+  
+  #book1 {
+    background-image: url('Images/book.png'); /* Replace with your image path */
+  }
+  
+  #book2 {
+    background-image: url('Images/book.png'); /* Replace with your image path */
+  }
+  

@@ -1,0 +1,25 @@
+.write-container {
+    position: fixed; /* Fixed positioning relative to the viewport */
+    left: 80em;
+    bottom: 1em;
+    width: 100%; /* Ensures the container spans the full width */
+    display: flex;
+    justify-content: start; /* Aligns children (button) to the left */
+  }
+  
+  .picture-button {
+    background-image: url('Images/PaintBrush2.png'); /* Replace with your image path */
+    background-size: cover;
+    background-position: center;
+    background-color: transparent;
+    width: 102.4px; /* Adjust as needed */
+    height: 86.8px; /* Adjust as needed */
+    border: none;
+    cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.picture-button:hover {
+transform: scale(1.2);
+}
+  

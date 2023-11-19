@@ -18,10 +18,10 @@
       right: 0;
     }
     to {
-      width: 18em;
-      height: 20em;
+      width: 36em;
+      height: 16em;
       opacity: 1;
-      right: 40%;
+      right: 30.5%;
     }
   }
 
@@ -29,9 +29,9 @@
     position: fixed;
     width: 100%; /* Adjust size as needed */
     height: 100%; /* Adjust size as needed */
-    top: 10em;
+    top: 10.5em;
     right: 10em;
-    background-color: black;
+    background-color: #0C1430;
     color: white;
     display: flex;
     justify-content: center;

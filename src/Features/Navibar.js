@@ -15,8 +15,8 @@ function Navibar() {
       </button>
       {isSquareVisible && (
         <div className="black-square">
-          <b>More Info</b>
-          {/* Add more text or elements as needed */}
+          
+          {<p><b>More Info</b><br></br>This app is about where people come to share their stories!</p>}
         </div>
       )}
     </nav>

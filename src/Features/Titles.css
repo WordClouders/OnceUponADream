@@ -1,0 +1,15 @@
+.titles-container {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .titles-container h1 {
+    font-size: 3em; /* Large text for the main title */
+    margin-bottom: 0.5em;
+    color: white;
+  }
+  
+  .titles-container h2 {
+    font-size: 1.5em; /* Smaller text for the subtitle */
+    color: white;
+  }
