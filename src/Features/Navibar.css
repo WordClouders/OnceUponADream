@@ -1,0 +1,42 @@
+
+  .toggle-square-btn {
+    background: none;
+    color:aliceblue;
+    box-shadow: none;
+    font-size: 3em;
+    position: absolute;
+    top: 10px; /* Adjust as needed */
+    right: 10px; /* Adjust as needed */
+    z-index: 1000;
+  }
+  
+  @keyframes expandSquare {
+    from {
+      width: 1;
+      height: 1;
+      opacity: 0;
+      right: 0;
+    }
+    to {
+      width: 18em;
+      height: 20em;
+      opacity: 1;
+      right: 40%;
+    }
+  }
+
+  .black-square {
+    position: fixed;
+    width: 100%; /* Adjust size as needed */
+    height: 100%; /* Adjust size as needed */
+    top: 10em;
+    right: 10em;
+    background-color: black;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    z-index: 500;
+    animation: expandSquare 1s ease-in-out forwards;
+  }
